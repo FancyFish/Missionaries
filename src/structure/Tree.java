@@ -24,19 +24,14 @@ public class Tree {
         root = new NodeTree<>(new State(true));
         estados = new ArrayList<>();
         idem = 1;
+        generarArbol(root);
     }
 
-    public void generarArbol() {
-
-    }
-
-    public void generarHijos(NodeTree<State> nodo) {
-        if (nodo != null && nodo.getData() != null) {
-            if (!esResultado(nodo.getData())) {
-                generarHijos(nodo);
+    private void generarArbol(NodeTree<State> state){
+            if(state!=null){
+                generarArbol(state);
             }
-            
-        }
+        
     }
 
     /**

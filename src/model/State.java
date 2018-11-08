@@ -50,8 +50,7 @@ public class State {
             switch(sentido){
             case  'i':
                 if(misioneDER>=misioneros&&
-                    cannibalDER>=canibales    ){
-                    
+                    cannibalDER>=canibales    ){                    
                     return true;
                 }
                 break;
