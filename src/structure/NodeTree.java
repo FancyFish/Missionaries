@@ -5,6 +5,7 @@
  */
 package structure;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
 
 /**
@@ -24,8 +25,10 @@ public class NodeTree<T> {
         return data;
     }
     
-    public void AddChildren(T data){
-        this.chldren.add(new NodeTree(data));
+    public NodeTree<T> AddChildren(T data){
+       NodeTree<T> nuevoNodo= new NodeTree(data);
+       this.chldren.add(new NodeTree(data));
+       return nuevoNodo;
                 
     }
     public void AddChildren(NodeTree node){

@@ -20,6 +20,13 @@ public class State {
         }
     }
 
+    public State(int misioneDER, int cannibalDER, int misioneIZQ, int cannibalIZQ) {
+        this.misioneDER = misioneDER;
+        this.cannibalDER = cannibalDER;
+        this.misioneIZQ = misioneIZQ;
+        this.cannibalIZQ = cannibalIZQ;
+    }
+    
     public State() {
     }
     public boolean mover(int misioneros, int canibales , char sentido){
@@ -45,7 +52,7 @@ public class State {
         
         return false;
     }
-    private boolean validar(int misioneros, int canibales , char sentido){
+    public boolean validar(int misioneros, int canibales , char sentido){
         if(misioneros+canibales<=2){
             switch(sentido){
             case  'i':
@@ -88,5 +95,22 @@ public class State {
                 
                 
         );
-    }        
+    }      
+
+    public int getCannibalDER() {
+        return cannibalDER;
+    }
+
+    public int getMisioneDER() {
+        return misioneDER;
+    }
+
+    public boolean esFinal() {
+        if(misioneIZQ==MISSIONARIES&&
+           cannibalIZQ==CANNIBALS     ){
+            return true;
+        }
+        return false;
+    }
+    
 }
