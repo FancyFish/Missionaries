@@ -22,6 +22,9 @@ public class Missionaries {
         // TODO code application logic here
         Tree t = new Tree();
         
+//        System.out.println("pruebas de genera hijos");
+//        t.generaHijos(new State(1, 1, 2,2), 'd');
+        
         
 //        ArrayList<State> listaNodo=t.generaHijos(new State(true), 'i');
 //        for (State  object : listaNodo) {

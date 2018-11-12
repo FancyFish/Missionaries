@@ -6,7 +6,7 @@ package model;
  *
  * @author boane
  */
-public class State {
+public class State implements Comparable<State>{
     public static final int MISSIONARIES=3;
     public static final int CANNIBALS=3;
     private int misioneDER;
@@ -112,5 +112,18 @@ public class State {
         }
         return false;
     }
+
+    @Override
+    public int compareTo(State o) {
+        if(o!=null){
+            return (this.cannibalDER==o.getCannibalDER() &&
+                         this.cannibalIZQ==o.getCannibalIZQ()&&
+                         this.misioneDER==o.getMisioneDER() &&
+                         this.misioneIZQ==o.getMisioneIZQ())?0:-1;
+        }
+        return -1;
+    }
+
+   
     
 }

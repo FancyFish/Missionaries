@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class NodeTree<T> {
     private T data;
+    private NodeTree<T> parent;
     private ArrayList<NodeTree> chldren;
 
     public NodeTree(T data ) {
@@ -27,12 +28,22 @@ public class NodeTree<T> {
     
     public NodeTree<T> AddChildren(T data){
        NodeTree<T> nuevoNodo= new NodeTree(data);
-       this.chldren.add(new NodeTree(data));
+       this.chldren.add(nuevoNodo);
+       nuevoNodo.setParent(this);
        return nuevoNodo;
                 
     }
     public void AddChildren(NodeTree node){
         this.chldren.add(node);
+        node.setParent(this);
     }   
+
+    public void setParent(NodeTree<T> parent) {
+        this.parent = parent;
+    }
+
+    public NodeTree<T> getParent() {
+        return parent;
+    }
     
 }
