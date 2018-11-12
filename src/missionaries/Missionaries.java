@@ -22,25 +22,7 @@ public class Missionaries {
         // TODO code application logic here
         Tree t = new Tree();
         
-//        System.out.println("pruebas de genera hijos");
-//        t.generaHijos(new State(1, 1, 2,2), 'd');
-        
-        
-//        ArrayList<State> listaNodo=t.generaHijos(new State(true), 'i');
-//        for (State  object : listaNodo) {
-//            System.out.println("D (canibales, misioneros)  ");
-//            System.out.println("       "+ object.getCannibalDER()+"  --   "+object.getMisioneDER());
-//            System.out.println("I (canibales, misioneros)  ");
-//            System.out.println("       "+ object.getCannibalIZQ()+"  --   "+object.getMisioneIZQ());
-//            System.out.println("____________________________________");
-//        }
-//        State s= new State(true);
-//        System.out.println(s.mover(1, 1, 'i'));
-//        s.ImprimeEstado();
-//        System.out.println(s.mover(1, 0, 'i'));
-//        s.ImprimeEstado();
-//        System.out.println(s.mover(1, 0, 'i'));
-//        s.ImprimeEstado();
+
     }
     
 }

@@ -9,16 +9,13 @@ import java.util.ArrayList;
 import model.State;
 
 /**
- *
+ *Clase arbol, donde se generan Estados Posibles y se organizan en la estructura de datos
  * @author boane
  */
 public class Tree {
 
     private NodeTree<State> root;
-    private State currentState;
-    private ArrayList<State> estados;
     private ArrayList<State> estadosHijo;
-    private int idem;
     ArrayList<State> caminoo;
 
     public Tree() {
@@ -68,23 +65,23 @@ public class Tree {
      */
     private String interprete(State inicial, State fin, char sentido){
         if(inicial!=null && fin!=null){
+            String builder="";
             int misionerosMovidos, canibalMovidos;
-            misionerosMovidos=inicial.getMisioneDER()-fin.getMisioneDER();
-            canibalMovidos=inicial.getCannibalDER()-fin.getCannibalDER();
+            misionerosMovidos=fin.getMisioneDER()-inicial.getMisioneDER();
+            canibalMovidos=fin.getCannibalDER()-inicial.getCannibalDER();
             if(misionerosMovidos==0&&canibalMovidos==0){
                 return "no se efectua ninguna accion";
             } else if(misionerosMovidos>0|| canibalMovidos>0){
-                
-            }  else if(misionerosMovidos>0|| canibalMovidos>0){
-            }     
-            switch(sentido){
-            case 'd':
-                
-                break;
-            case 'i':
-                break;
-            }
+                builder+="Se mueven "+(Math.abs(misionerosMovidos))+"misionero"+((Math.abs(misionerosMovidos)!=1)?"s":"")+" "
+                        + "y"+(Math.abs(canibalMovidos))+ " canibal"+((Math.abs(canibalMovidos)!=1)?"es":"")+" desde el lado izquierdo del rio";
+            }  else if(misionerosMovidos<0|| canibalMovidos<0){
+                 builder+="Se mueven "+(Math.abs(misionerosMovidos))+"misionero"+((Math.abs(misionerosMovidos)!=1)?"s":"")+" "
+                        + "y"+(Math.abs(canibalMovidos))+ " canibal"+((Math.abs(canibalMovidos)!=1)?"es":"")+" desde el lado derecho del rio";
+            } 
+            return builder;
+            
         }
+        return "error; una de las entradas de estado es nula";
     }
     
 /**
@@ -136,7 +133,7 @@ public class Tree {
 
     /**
      * Permite verificar si un estado ya se ha encontrado(generado) en la rama
-     * en la que se ubica esto para evitar loops infinitos
+     * en la que se ubica el nodo ingresado; esto para evitar loops infinitos
      *
      * @param estado
      * @param rama
@@ -153,10 +150,17 @@ public class Tree {
             current = current.getParent();
 
         }
+        // aca se dejo que pudiera haber un maximo de 1 repeticion por rama, de esta forma encuentra el resultado
         return (countex > 1);
 
     }
-
+    /**
+     * Genera los posibles estados consecuentes a un estaso, es decir, de que forma se pueden mover
+     * misioneros o canibales en base a este ultimo
+     * @param s
+     * @param sentido
+     * @return 
+     */
     public ArrayList<State> generaHijos(State s, char sentido) {
         ArrayList<State> hijos = new ArrayList<>();
         State nuevoEstado = new State();

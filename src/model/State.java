@@ -3,7 +3,7 @@
 package model;
 
 /**
- *
+ * Clase estado, guarda los misioneros y canibales en cada lado del rio en un momento dado
  * @author boane
  */
 public class State implements Comparable<State>{
@@ -29,6 +29,13 @@ public class State implements Comparable<State>{
     
     public State() {
     }
+    /**
+     * permite realizar paso de canibales o misioneros a los lados del rio, dado determinado sentido
+     * @param misioneros
+     * @param canibales
+     * @param sentido
+     * @return 
+     */
     public boolean mover(int misioneros, int canibales , char sentido){
         if(validar( misioneros,  canibales , sentido)){
             switch (sentido){
@@ -52,6 +59,15 @@ public class State implements Comparable<State>{
         
         return false;
     }
+    /**
+     * Permite verificar si es un movimiento valido de canibales y misioneros
+     * de acuerdo a las reglas de la logica solo se pueden llevar 2 personas (capacidad del bote)
+     * y deben existir al menos la cantidad de personas especificadas desde el lado donde se mueve
+     * @param misioneros
+     * @param canibales
+     * @param sentido
+     * @return 
+     */
     public boolean validar(int misioneros, int canibales , char sentido){
         if(misioneros+canibales<=2){
             switch(sentido){
@@ -112,7 +128,11 @@ public class State implements Comparable<State>{
         }
         return false;
     }
-
+    /**
+     * Metodo compare to me permite decir si dos estados son iguales
+     * @param o
+     * @return 
+     */
     @Override
     public int compareTo(State o) {
         if(o!=null){

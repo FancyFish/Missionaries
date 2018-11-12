@@ -9,7 +9,7 @@ import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
 
 /**
- *
+ * Nodo del arbol N-ario (que puede tener muchos hijos por nodo)
  * @author boane
  */
 public class NodeTree<T> {
